@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://modegpua-pixel.github.io/TUTOCLAUDECODE/sitemap.xml
