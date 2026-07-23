@@ -5,9 +5,13 @@ document.getElementById("year").textContent = new Date().getFullYear();
 const toggle = document.querySelector(".nav-toggle");
 const nav = document.querySelector(".nav");
 if (toggle && nav) {
-  toggle.addEventListener("click", () => nav.classList.toggle("open"));
+  const setOpen = (open) => {
+    nav.classList.toggle("open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+  };
+  toggle.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
   nav.querySelectorAll("a").forEach((link) =>
-    link.addEventListener("click", () => nav.classList.remove("open"))
+    link.addEventListener("click", () => setOpen(false))
   );
 }
 
