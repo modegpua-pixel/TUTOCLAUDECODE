@@ -341,9 +341,35 @@
           Basé à Paris, je travaille en remote avec des clients partout.
           Décrivez votre besoin, je reviens vers vous sous 24-48h.
         </p>
-        <div class="contact-actions">
-          <a href="mailto:modegpua@gmail.com" class="btn btn-primary">✉ M'écrire par email</a>
-          <a href="https://www.linkedin.com/in/rudy-montois/" target="_blank" rel="noopener" class="btn btn-ghost">in — LinkedIn</a>
+
+        <!-- Formulaire : remplacer VOTRE_ID par votre identifiant Formspree -->
+        <form id="contact-form" class="contact-form" action="https://formspree.io/f/VOTRE_ID" method="POST">
+          <div class="form-row">
+            <label>
+              <span>Nom</span>
+              <input type="text" name="nom" placeholder="Votre nom" required />
+            </label>
+            <label>
+              <span>Email</span>
+              <input type="email" name="email" placeholder="vous@entreprise.com" required />
+            </label>
+          </div>
+          <label>
+            <span>Entreprise <em>(optionnel)</em></span>
+            <input type="text" name="entreprise" placeholder="Nom de votre entreprise" />
+          </label>
+          <label>
+            <span>Votre besoin</span>
+            <textarea name="message" rows="4" placeholder="Décrivez en quelques lignes ce que vous aimeriez automatiser…" required></textarea>
+          </label>
+          <button type="submit" class="btn btn-primary form-submit">Envoyer ma demande</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+
+        <div class="contact-alt">
+          <span>Ou directement :</span>
+          <a href="mailto:modegpua@gmail.com">✉ modegpua@gmail.com</a>
+          <a href="https://www.linkedin.com/in/rudy-montois/" target="_blank" rel="noopener">in — LinkedIn</a>
         </div>
       </div>
     </section>
