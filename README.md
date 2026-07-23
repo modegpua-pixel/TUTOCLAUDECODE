@@ -37,3 +37,15 @@ Tant que `VOTRE_ID` n'est pas remplacé, le formulaire affiche un rappel au lieu
 ## Mettre en ligne (gratuit)
 
 Le plus simple : **GitHub Pages** (Settings → Pages → branche `main` → dossier `/root`), ou glisser le dossier sur [Netlify](https://app.netlify.com/drop).
+
+## Nom de domaine perso : rudymontois.fr
+
+Le fichier `CNAME` (contenant `rudymontois.fr`) et toutes les URLs (SEO, sitemap, Open Graph) sont déjà configurés. Il reste à :
+
+1. **Acheter le domaine** `rudymontois.fr` chez un registrar (OVH, Gandi, Namecheap…).
+2. **Configurer le DNS** chez le registrar :
+   - 4 enregistrements `A` sur `@` → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+   - 1 enregistrement `CNAME` sur `www` → `modegpua-pixel.github.io`
+3. **GitHub** → Settings → Pages → *Custom domain* → `rudymontois.fr` → Save, puis cocher **Enforce HTTPS**.
+
+Le DNS peut prendre quelques heures à se propager. Une fois actif, le site est accessible sur https://rudymontois.fr.

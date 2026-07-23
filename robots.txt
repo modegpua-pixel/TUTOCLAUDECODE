@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://modegpua-pixel.github.io/TUTOCLAUDECODE/sitemap.xml
+Sitemap: https://rudymontois.fr/sitemap.xml
