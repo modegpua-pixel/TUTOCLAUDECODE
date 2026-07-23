@@ -202,6 +202,42 @@ a { color: inherit; text-decoration: none; }
 .card li { color: var(--text); font-size: 0.92rem; padding-left: 24px; position: relative; }
 .card li::before { content: "✦"; position: absolute; left: 0; color: var(--violet-bright); }
 
+/* ---------- Projet phare (Evolutid) ---------- */
+.project-featured {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 40px;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+.project-featured:hover { border-color: var(--violet); box-shadow: 0 24px 60px -24px var(--violet-glow); }
+.featured-visual {
+  background: linear-gradient(150deg, var(--violet-deep), var(--violet-bright));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 32px;
+  text-align: center;
+}
+.featured-visual span { font-family: "Space Grotesk", sans-serif; font-size: 2rem; font-weight: 700; color: #fff; }
+.featured-visual em { font-style: normal; color: rgba(255,255,255,0.85); font-size: 0.95rem; letter-spacing: 0.05em; }
+.featured-body { padding: 34px 36px; }
+.featured-body h3 { font-size: 1.5rem; margin-bottom: 6px; }
+.featured-role { color: var(--violet-bright); font-weight: 600; font-size: 0.95rem; margin-bottom: 16px; }
+.featured-body p { color: var(--text-dim); font-size: 0.98rem; margin-bottom: 12px; }
+.sub-head {
+  font-size: 1.15rem;
+  color: var(--text);
+  margin-bottom: 22px;
+  font-weight: 600;
+}
+
 /* ---------- Projets ---------- */
 .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .project {
@@ -303,6 +339,8 @@ a { color: inherit; text-decoration: none; }
 /* ---------- Responsive ---------- */
 @media (max-width: 860px) {
   .cards, .projects { grid-template-columns: 1fr; }
+  .project-featured { grid-template-columns: 1fr; }
+  .featured-visual { padding: 40px; }
   .about-grid { grid-template-columns: 1fr; text-align: center; }
   .about-avatar { max-width: 200px; margin: 0 auto; }
   .skills { justify-content: center; }
