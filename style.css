@@ -202,6 +202,107 @@ a { color: inherit; text-decoration: none; }
 .card li { color: var(--text); font-size: 0.92rem; padding-left: 24px; position: relative; }
 .card li::before { content: "✦"; position: absolute; left: 0; color: var(--violet-bright); }
 
+/* ---------- Bloc problème ---------- */
+.intro-block {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 40px 24px 20px;
+  text-align: center;
+}
+.intro-block p {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1.3rem, 3vw, 1.9rem);
+  line-height: 1.45;
+  color: var(--text-dim);
+  font-weight: 400;
+}
+.intro-block strong { color: var(--violet-bright); font-weight: 600; }
+
+/* ---------- Friction / cas d'usage ---------- */
+.friction { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.friction-card {
+  background: linear-gradient(180deg, var(--surface), var(--bg-2));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+.friction-card:hover { transform: translateY(-6px); border-color: var(--violet); box-shadow: 0 24px 50px -24px var(--violet-glow); }
+.friction-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+.friction-top .fic {
+  width: 46px; height: 46px;
+  display: grid; place-items: center;
+  border-radius: 12px;
+  background: rgba(139, 92, 246, 0.12);
+  color: var(--violet-bright);
+  font-size: 1.3rem;
+}
+.friction-top .arrow { color: var(--text-dim); font-size: 1.2rem; }
+.friction-card h3 { font-size: 1.18rem; margin-bottom: 14px; }
+.friction-card .label {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.friction-card > p { color: var(--text-dim); font-size: 0.94rem; margin-bottom: 18px; }
+.auto-box {
+  margin-top: auto;
+  background: rgba(139, 92, 246, 0.09);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+.auto-box .label.auto { color: var(--violet-bright); }
+.auto-box p:last-child { color: var(--text); font-size: 0.92rem; margin: 0; }
+
+/* ---------- Solutions ---------- */
+.solutions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.solution-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+.solution-card:hover { transform: translateY(-6px); border-color: var(--violet); box-shadow: 0 24px 50px -24px var(--violet-glow); }
+.solution-visual {
+  height: 150px;
+  display: grid;
+  place-items: center;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: #fff;
+}
+.solution-visual.v1 { background: linear-gradient(135deg, #6d28d9, #a78bfa); }
+.solution-visual.v2 { background: linear-gradient(135deg, #4c1d95, #8b5cf6); }
+.solution-visual.v3 { background: linear-gradient(135deg, #7c3aed, #c084fc); }
+.solution-visual.v4 { background: linear-gradient(135deg, #5b21b6, #9333ea); }
+.solution-body { padding: 28px 30px; }
+.solution-body h3 { font-size: 1.35rem; margin-bottom: 10px; }
+.solution-body p { color: var(--text-dim); font-size: 0.98rem; margin-bottom: 16px; }
+.solution-body .more { color: var(--violet-bright); font-weight: 600; font-size: 0.92rem; }
+
+/* ---------- Témoignage ---------- */
+.testimonials { text-align: center; }
+.testimonial {
+  max-width: 760px;
+  margin: 0 auto;
+  background: linear-gradient(160deg, var(--surface-2), var(--bg-2));
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 48px 44px;
+}
+.testimonial .quote-mark { font-family: "Space Grotesk", sans-serif; font-size: 3rem; color: var(--violet-bright); line-height: 0.5; }
+.testimonial p { font-size: 1.2rem; color: var(--text); margin: 20px 0 24px; line-height: 1.5; }
+.testimonial footer { color: var(--text-dim); font-size: 0.95rem; }
+.testimonial footer strong { color: var(--text); }
+
 /* ---------- Méthode (steps) ---------- */
 .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .step {
@@ -389,7 +490,7 @@ a { color: inherit; text-decoration: none; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 860px) {
-  .cards, .projects, .steps { grid-template-columns: 1fr; }
+  .cards, .projects, .steps, .friction, .solutions { grid-template-columns: 1fr; }
   .project-featured { grid-template-columns: 1fr; }
   .featured-visual { padding: 40px; }
   .about-grid { grid-template-columns: 1fr; text-align: center; }
