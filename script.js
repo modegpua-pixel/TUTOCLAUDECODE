@@ -31,7 +31,7 @@ if (!prefersReduced) {
     .forEach((group) => {
       Array.from(group.children).forEach((child, i) => {
         child.classList.add("reveal");
-        child.dataset.delay = String(i * 90);
+        child.dataset.delay = String(i * 70);
         revealEls.push(child);
       });
     });
@@ -69,7 +69,7 @@ function animateCount(el) {
   if (!match) return;
   const [, prefix, numStr, suffix] = match;
   const target = parseInt(numStr, 10);
-  const duration = 1100;
+  const duration = 1300;
   const start = performance.now();
   function tick(now) {
     const p = Math.min((now - start) / duration, 1);
