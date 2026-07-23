@@ -11,26 +11,91 @@ if (toggle && nav) {
   );
 }
 
-// Apparition douce des sections au scroll
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = "1";
-        entry.target.style.transform = "translateY(0)";
-        observer.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.12 }
-);
+// Révélation au scroll, en cascade (stagger)
+const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-document.querySelectorAll(".section, .hero").forEach((el) => {
-  el.style.opacity = "0";
-  el.style.transform = "translateY(24px)";
-  el.style.transition = "opacity 0.7s ease, transform 0.7s ease";
-  observer.observe(el);
-});
+if (!prefersReduced) {
+  const revealEls = [];
+
+  // Éléments révélés un par un
+  document
+    .querySelectorAll(".section-head, .intro-block p, .project-featured, .testimonial")
+    .forEach((el) => {
+      el.classList.add("reveal");
+      revealEls.push(el);
+    });
+
+  // Groupes révélés en cascade (chaque enfant décalé dans le temps)
+  document
+    .querySelectorAll(".hero, .logos-row, .friction, .solutions, .pricing, .steps, .faq, .contact-inner")
+    .forEach((group) => {
+      Array.from(group.children).forEach((child, i) => {
+        child.classList.add("reveal");
+        child.dataset.delay = String(i * 90);
+        revealEls.push(child);
+      });
+    });
+
+  let ticking = false;
+  function revealCheck() {
+    ticking = false;
+    const trigger = window.innerHeight * 0.88;
+    for (let i = revealEls.length - 1; i >= 0; i--) {
+      const el = revealEls[i];
+      const top = el.getBoundingClientRect().top;
+      if (top < trigger) {
+        // saut d'ancre : élément déjà dépassé → pas de délai
+        el.style.transitionDelay = (top < 0 ? 0 : Number(el.dataset.delay || 0)) + "ms";
+        el.classList.add("in");
+        revealEls.splice(i, 1);
+      }
+    }
+  }
+  function onScroll() {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(revealCheck);
+    }
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  revealCheck(); // état initial (hero visible dès le chargement)
+}
+
+// Compteurs animés sur les statistiques du hero (+5, +2…)
+function animateCount(el) {
+  const raw = el.textContent.trim();
+  const match = raw.match(/^(\D*)(\d+)(.*)$/);
+  if (!match) return;
+  const [, prefix, numStr, suffix] = match;
+  const target = parseInt(numStr, 10);
+  const duration = 1100;
+  const start = performance.now();
+  function tick(now) {
+    const p = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
+    el.textContent = prefix + Math.round(eased * target) + suffix;
+    if (p < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+const statNumbers = document.querySelectorAll(".hero-stats strong");
+if (statNumbers.length && !prefersReduced && "IntersectionObserver" in window) {
+  const statObserver = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        // On n'anime que les valeurs commençant par "+" (on évite "n8n")
+        if (entry.isIntersecting && entry.target.textContent.trim().startsWith("+")) {
+          animateCount(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 1 }
+  );
+  statNumbers.forEach((el) => statObserver.observe(el));
+}
 
 // Envoi du formulaire de contact (AJAX vers Formspree) — messages bilingues
 const form = document.getElementById("contact-form");
