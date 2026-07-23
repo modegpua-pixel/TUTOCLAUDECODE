@@ -12,15 +12,15 @@ Portfolio en une page (MVP v1). Thème sombre + violet, orienté « offre » fa�
 
 Ouvre simplement `index.html` dans ton navigateur (double-clic).
 
-## À personnaliser
+## Contenu
 
-Les contenus placeholder à remplacer sont repérables entre crochets `[...]` ou par les textes « Nom du projet », « Compétence 1 », etc. :
+Le portfolio présente Rudy Montois — consultant en automatisation spécialisé service client (startups SaaS). Positionnement, offre (Audit & Conseil / Automatisation sur-mesure / Accompagnement continu), bio et compétences sont renseignés.
 
-1. **Hero** — remplace `[ton métier]` et les statistiques (`+X`).
-2. **Offre** — ajuste les 3 formules à ce que tu proposes réellement.
-3. **Projets** — remplace les 3 cartes par tes vraies réalisations.
-4. **À propos** — écris ta bio, ta ville et tes compétences.
-5. **Contact** — l'email et le lien LinkedIn sont déjà renseignés.
+Reste à personnaliser quand tu le souhaites :
+
+- **Projets** — les 3 exemples d'automatisations sont des cas types, à remplacer par tes vrais projets clients.
+- **À propos** — tu peux ajouter ta ville si tu veux.
+- **Contact** — l'email et le lien LinkedIn sont déjà renseignés.
 
 ## Mettre en ligne (gratuit)
 
