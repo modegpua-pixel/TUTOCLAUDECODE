@@ -1,11 +1,11 @@
 # Portfolio — Rudy Montois
 
-Portfolio en une page (MVP v1). Thème sombre + violet, orienté « offre » façon landing page freelance.
+Portfolio en une page (MVP v1). Thème sombre + or antique, orienté « offre » façon landing page freelance.
 
 ## Structure
 
 - `index.html` — contenu de la page
-- `style.css` — design (thème sombre / violet)
+- `style.css` — design (thème sombre / or antique)
 - `script.js` — menu mobile, année dynamique, animations au scroll
 
 ## Comment le voir
